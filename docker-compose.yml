@@ -1,0 +1,20 @@
+version: "3.8"
+
+
+services: 
+  minecraft-server: 
+    container_name: minecraft-server
+    image: minecraft-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 25565:25565
+    volumes:
+      - minecraft_server_volume:/minecraft
+    logging:
+      driver: journald
+
+volumes:
+  minecraft_server_volume:
